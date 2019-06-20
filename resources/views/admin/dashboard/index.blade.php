@@ -1,0 +1,1 @@
+{{Auth::user()->name}}, You are admin

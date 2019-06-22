@@ -16,4 +16,14 @@ class HomeController extends Controller
     	$departments = Department::all();
         return view("student.offeredcourselist", compact('departments'));
     }
+
+
+     public function readdata($year)
+    {	
+  
+        $courses = Course::latest()
+       ->where('year',$year)->get();
+
+       return view("student.courselist",compact('courses'));
+    }
 }

@@ -46,8 +46,17 @@ Route::group(['as'=>'student.','prefix'=>'student','namespace'=>'Student','middl
 
    Route::resource('profile','ProfileController');
    Route::get('offeredcourselist','HomeController@index')->name('offeredcourselist');
-    
+
+   Route::get('courselist/{year}','HomeController@readdata')->name('courselist');
+    //Route::get('testUrl/{id}', 'TestController@getAjax');
   
+});
+
+Route::get('/ajax-subcat',function(){
+	$cat_id = Input::get('cat_id');
+	$courses = Course::where('year', '=' , $cat_id)->get();
+
+	return Response::json($courses);
 });
 
 

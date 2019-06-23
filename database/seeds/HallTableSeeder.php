@@ -13,6 +13,8 @@ class HallTableSeeder extends Seeder
     {
         DB::table('halls')->insert([
             'name' => 'ASH',
+        ]);
+        DB::table('halls')->insert([
             'name' => 'BKH',
         ]);
     }

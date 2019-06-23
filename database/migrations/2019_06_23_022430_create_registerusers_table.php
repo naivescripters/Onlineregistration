@@ -15,6 +15,16 @@ class CreateRegisterusersTable extends Migration
     {
         Schema::create('registerusers', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned()->unique();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
+            $table->string('year');
+            $table->string('term');
+            $table->string('session');
+            $table->integer('department_id')->unsigned();
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('restrict');
+            $table->integer('halls_id')->unsigned();
+            $table->foreign('halls_id')->references('id')->on('halls')->onDelete('restrict');
+            
             $table->timestamps();
         });
     }

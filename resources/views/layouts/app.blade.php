@@ -17,6 +17,7 @@
 
     <!-- Styles -->
     @yield('css')
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
@@ -38,12 +39,23 @@
             </li>
             <span class="break"></span>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('student.offeredcourselist') }}">Offered Course list</a>
+                <a class="nav-link" href="{{ route('student.offeredcourselist')}}">Offered Course list</a>
             </li>
             <span class="break"></span>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Registration</a>
-            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Registration</a>
+                <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ route('student.startregistration')}}">Start registration</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Choice subject</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{{ route('student.updateregistration')}}">Update registration</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Update Choice subject</a>
+                  <div class="dropdown-divider"></div>
+                  
+                </div>
+              </li>
             <span class="break"></span>
             <li class="nav-item">
                 <a class="nav-link" href="#">Check Status</a>
@@ -82,6 +94,14 @@
 </main>
 </div>
 <script src="{{asset('js/app.js')}}"></script>
-@yield('js')
+<script src="{{asset('js/toastr.min.js')}}"></script>
+
+<script type="text/javascript">
+    @if(Session::has('success'))
+
+        toastr.success("{{Session::get('success')}}");
+    @endif
+</script>
+
 </body>
 </html>

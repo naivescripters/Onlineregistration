@@ -47,6 +47,10 @@ Route::group(['as'=>'student.','prefix'=>'student','namespace'=>'Student','middl
    Route::resource('profile','ProfileController');
    Route::get('offeredcourselist','HomeController@index')->name('offeredcourselist');
    Route::post('courselist','HomeController@readdata')->name('courselist');
+
+   Route::get('startregistration','HomeController@startregistration')->name('startregistration');
+   Route::post('confirmregistration','HomeController@confirmregistration')->name('confirmregistration');
+
     
   
 });

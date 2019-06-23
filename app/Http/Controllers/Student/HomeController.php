@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Department;
 use App\Course;
+use App\Hall;
 
 class HomeController extends Controller
 {
@@ -34,6 +35,34 @@ class HomeController extends Controller
         ->get();
         return view("student.offeredcourselist", compact('departments','flag','courses'));
     }
+
+
+    public function startregistration()
+    {	
+        $departments = Department::all();
+        $halls = Hall::all();
+        return view("student.startregister", compact('departments','halls'));
+    }
+
+    
+    public function confirmregistration(Request $request)
+    {	
+        $this->validate($request,[
+            'year' => 'required',
+            'term' => 'required',
+            'department_id' => 'required',
+        ]);
+
+        $flag = 1;
+        $departments = Department::all();
+        $courses = Course::latest()
+        ->where('year',$request->year)
+        ->orWhere('year',$request->term)
+        ->where('department_id',$request->department_id)
+        ->get();
+        return view("student.offeredcourselist", compact('departments','flag','courses'));
+    }
+
 
 
 }

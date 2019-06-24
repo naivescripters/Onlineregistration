@@ -17,7 +17,7 @@
 
     <!-- Styles -->
     @yield('css')
-    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
+   {{-- <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
@@ -47,13 +47,12 @@
                 <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{ route('student.startregistration')}}">Start registration</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Choice subject</a>
+                  <a class="dropdown-item" href="{{ route('student.selectcourse.index') }}">Select subject</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ route('student.updateregistration')}}">Update registration</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Update Choice subject</a>
-                  <div class="dropdown-divider"></div>
-                  
+                  <a class="dropdown-item" href="{{ route('student.selectcourse.edit',Auth::user()->id)}}">Update selected subject</a>
+                  <div class="dropdown-divider"></div>         
                 </div>
               </li>
             <span class="break"></span>
@@ -96,12 +95,12 @@
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/toastr.min.js')}}"></script>
 
-<script type="text/javascript">
+{{--<script type="text/javascript">
     @if(Session::has('success'))
 
         toastr.success("{{Session::get('success')}}");
     @endif
-</script>
+</script> --}}
 
 </body>
 </html>

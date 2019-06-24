@@ -30,5 +30,23 @@ class CourseTableSeeder extends Seeder
             'term' 		=> 	'1',
             'credit'	=> 	'3.00',	
         ]);
+        DB::table('courses')->insert([
+            
+            'department_id' => '3',
+            'code' 		=> 	'ICE-1104',
+            'name' 		=>	'Electrical Circuits test',
+            'year' 		=> 	'1',
+            'term' 		=> 	'1',
+            'credit'	=> 	'3.00',	
+        ]);
+        DB::table('courses')->insert([
+            
+            'department_id' => '3',
+            'code' 		=> 	'ICE-1105',
+            'name' 		=>	'Electrical Circuits test3',
+            'year' 		=> 	'1',
+            'term' 		=> 	'1',
+            'credit'	=> 	'3.00',	
+        ]);
     }
 }

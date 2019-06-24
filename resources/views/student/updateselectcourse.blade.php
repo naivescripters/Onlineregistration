@@ -15,15 +15,25 @@
       <h5 class="font-weight-bold">Course List</h5>
 
 
-      <form action="{{ route('student.selectcourse.store') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('student.selectcourse.update',Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <?php $increment =1; ?>
         @foreach($courses as $course)
           <div class="form-check" style="margin-top: 10px;">
           <span style="margin-right: 35px;"> {{$increment++}}</span>
-          <input class="form-check-input" type="checkbox" name="course_id[]" value="{{$course->id}}" id="defaultCheck1" >
+          <input class="form-check-input" type="checkbox" name="course_id[]" value="{{$course->id}}" id="defaultCheck1" 
+          
+          @foreach($finds as $find)
+          @if($find == $course->id) checked
+          @endif
+          @endforeach
+
+          >
             <label class="form-check-label" style="margin-left:15px;" for="defaultCheck1">
               {{$course->name}}
+              
+             
             </label>
           </div>
         @endforeach

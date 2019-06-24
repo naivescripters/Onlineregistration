@@ -6,8 +6,8 @@
         <h3>UPDATE YOUR PERSONAL INFORMATION</h3>
 
         <form action="{{ route('student.profile.update',$profile->id) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
+            @csrf
+            @method('PUT')
 
             <div class="form-group row">
                 <label for="user_id" class="col-md-4 col-form-label text-md-right">{{ __('Student ID') }}</label>
